@@ -22,12 +22,12 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Filter a {@link Scorable}, intercepting methods and optionally changing
- * their return values
+ * Filter a {@link Scorable}, intercepting methods and optionally changing their
+ * return values
  *
- * The default implementation simply passes all calls to its delegate, with
- * the exception of {@link #setMinCompetitiveScore(float)} which defaults
- * to a no-op.
+ * The default implementation simply passes all calls to its delegate, with the
+ * exception of {@link #setMinCompetitiveScore(float)} which defaults to a
+ * no-op.
  */
 public class FilterScorable extends Scorable {
 
@@ -35,7 +35,8 @@ public class FilterScorable extends Scorable {
 
   /**
    * Filter a scorer
-   * @param in  the scorer to filter
+   * 
+   * @param in the scorer to filter
    */
   public FilterScorable(Scorable in) {
     this.in = in;
@@ -54,5 +55,10 @@ public class FilterScorable extends Scorable {
   @Override
   public Collection<ChildScorable> getChildren() throws IOException {
     return Collections.singletonList(new ChildScorable(in, "FILTER"));
+  }
+
+  @Override
+  public float smoothingScore(int docId) throws IOException {
+    return 0;
   }
 }

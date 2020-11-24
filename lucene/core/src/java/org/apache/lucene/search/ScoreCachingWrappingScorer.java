@@ -16,7 +16,6 @@
  */
 package org.apache.lucene.search;
 
-
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -67,5 +66,10 @@ public final class ScoreCachingWrappingScorer extends Scorable {
   @Override
   public Collection<ChildScorable> getChildren() {
     return Collections.singleton(new ChildScorable(in, "CACHED"));
+  }
+
+  @Override
+  public float smoothingScore(int docId) throws IOException {
+    return 0;
   }
 }

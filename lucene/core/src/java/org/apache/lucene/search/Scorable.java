@@ -30,6 +30,13 @@ public abstract class Scorable {
    * Returns the score of the current document matching the query.
    */
   public abstract float score() throws IOException;
+  
+  /**
+   * Returns the smoothing score of the current document matching the query. 
+   * This score is used when the query/term does not appear in the document.  
+   * This can return 0 or a smoothing score.
+   */
+  public abstract float smoothingScore(int docId) throws IOException;
 
   /**
    * Returns the doc ID that is currently being scored.

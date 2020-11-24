@@ -111,4 +111,10 @@ public abstract class Scorer extends Scorable {
    * included and {@code upTo} included.
    */
   public abstract float getMaxScore(int upTo) throws IOException;
+
+	@Override
+	public float smoothingScore(int docId) throws IOException {
+		return 0;
+	}
+
 }
